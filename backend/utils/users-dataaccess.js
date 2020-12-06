@@ -7,5 +7,4 @@ const instance = axios.create({
 
 
 
-
 exports.getAllUser = () => instance.get('/users').then(user => user.data);

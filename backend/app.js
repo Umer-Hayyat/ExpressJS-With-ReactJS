@@ -20,9 +20,8 @@ app.use(cookieParser());
 
 // attach custom variable, this probably would be a user after authentication
 app.use((req, res, next) => {
-
   //by pass authentication and authorization on "GetToken"
-  if (req.path.indexOf("GetToken") > -1) {
+  if (req.path.includes("GetToken")) {
     next();
   } else {
     let authorization = req.headers.authorization
@@ -37,13 +36,11 @@ app.use((req, res, next) => {
       else
         throw Error("JWT is missing");
 
-
       if (jwt && !!jwt.sub) {
         res.locals.user = {
           name: jwt.sub,
           roles: jwt.roles,
         };
-
         next();
       } else {
         throw Error("User is unauthorized");
@@ -64,7 +61,7 @@ app.use((req, res, next) => {
 
 // error handler
 app.use((err, req, res, next) => {
-  res.send(createError(401, err.message));
+  res.status(401).send(err.message);
 });
 
 module.exports = app;

@@ -8,3 +8,4 @@ router.get("/all", ({ res }) => getAllUser().then(users => res.json(users)))
 
 
 module.exports = router;
+5
