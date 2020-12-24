@@ -7,7 +7,7 @@ var cors = require("cors");
 
 var usersRouter = require("./routes/users");
 var authRouter = require("./routes/auth");
-var authentication = require("./utils/authentication");
+var authentication = require("./auth/authentication");
 
 var app = express();
 

@@ -1,6 +1,6 @@
 const jwt = require("jsonwebtoken");
 const keyManager = require("./key-manager");
-const { Roles } = require("./constants");
+const { Roles } = require("../utils/constants");
 
 const payLoad = {
   roles: [Roles.MODERATOR, Roles.USER],

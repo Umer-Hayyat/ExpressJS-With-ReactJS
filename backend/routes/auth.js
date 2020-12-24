@@ -1,7 +1,7 @@
 var express = require("express");
 const { body, validationResult } = require("express-validator");
 var router = express.Router();
-var authentication = require("../utils/authentication");
+var authentication = require("../auth/authentication");
 
 router.post(
   "/GetToken",
