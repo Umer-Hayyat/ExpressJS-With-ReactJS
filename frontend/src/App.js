@@ -1,4 +1,4 @@
-import './App.css';
+import "./App.css";
 import {
   BrowserRouter as Router,
   Switch,
@@ -9,8 +9,8 @@ import {
   // useLocation
 } from "react-router-dom";
 
-import PrivateRoute from './Auth/PrivateRoute';
-import Login from './Auth/Login';
+import PrivateRoute from "./Auth/PrivateRoute";
+import Login from "./Auth/Login";
 import UsersList from "./Components/Users/UsersList";
 
 function App() {

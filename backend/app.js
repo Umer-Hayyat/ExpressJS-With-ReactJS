@@ -11,7 +11,6 @@ var authentication = require("./utils/authentication");
 
 var app = express();
 
-
 app.use(cors());
 app.use(logger("dev"));
 app.use(express.json());
@@ -33,8 +32,7 @@ app.use((req, res, next) => {
       //check if JWT is passed, validate it and throw error if validation fails.
       if (!!authorization)
         jwt = authentication.checkIfUserVerified(authorization);
-      else
-        throw Error("JWT is missing");
+      else throw Error("JWT is missing");
 
       if (jwt && !!jwt.sub) {
         res.locals.user = {

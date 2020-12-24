@@ -1,30 +1,27 @@
-import axios from 'axios';
-import { setAccessToken, getAccessToken } from './AuthHelper';
+import axios from "axios";
+import { setAccessToken, getAccessToken } from "./AuthHelper";
 
 const instance = axios.create({
-    baseURL: process.env.REACT_APP_SERVICE_BASEURL,
-    // timeout: 1000,
+  baseURL: process.env.REACT_APP_SERVICE_BASEURL,
+  // timeout: 1000,
 });
 
-
-
-instance.interceptors.request.use((config) => {
-    
+instance.interceptors.request.use(
+  (config) => {
     if (!config.url?.includes("/GetToken")) {
-        config.headers = {
-            Authorization: `Bearer ${getAccessToken()}`
-        }
+      config.headers = {
+        Authorization: `Bearer ${getAccessToken()}`,
+      };
     }
     return config;
-}, (error) => {
+  },
+  (error) => {
     if (error.message === process.env.REACT_APP_JWT_EXPIRED_MESSAGE) {
-
-
     }
     // Do something with request error
     return Promise.reject(error);
-});
-
+  }
+);
 
 export default instance;
 export const axiosGet = (url) => instance.get(url);
